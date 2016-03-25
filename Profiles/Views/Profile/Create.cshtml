@@ -1,0 +1,111 @@
+﻿@model Profiles.Models.Profile
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<style>
+    fieldset {
+        width:50%;
+        float:left;
+    }
+</style>
+
+@using (Html.BeginForm("Avatar", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => model.Avatar)
+    <input type="file" name="avatar" />
+    <input type="submit" value="Upload" />
+}
+
+@using (Html.BeginForm("Create","Profile")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Profile</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NickName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NickName)
+            @Html.ValidationMessageFor(model => model.NickName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Avatar)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.Avatar)
+            @Html.ValidationMessageFor(model => model.Avatar)*@
+            
+            @Html.Label("avatar", ViewBag.filePath as string)
+            @Html.Hidden("Avatar",ViewBag.filePath as string)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Intro)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Intro)
+            @Html.ValidationMessageFor(model => model.Intro)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+    
+    <div>
+        <img src="@Url.Content(ViewBag.filePath??"1")" alt="Avatar" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

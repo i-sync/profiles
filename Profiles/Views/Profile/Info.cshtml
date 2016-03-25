@@ -1,0 +1,142 @@
+﻿@model Profiles.Models.Profile
+@{
+    ViewBag.Title = "Info";
+}
+
+<h2>Info</h2>
+<fieldset>
+    <legend>Profile</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.NickName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NickName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Avatar)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Avatar)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Intro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Intro)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.AddDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UpdateDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdateDate)
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Skill</legend>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayName("Title")
+            </th>
+            <th>
+                @Html.DisplayName("Context")
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Skills)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Context)
+                </td>
+            </tr>
+        }
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Project</legend>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayName("Title")
+            </th>
+            <th>
+                @Html.DisplayName("Image")
+            </th>
+            <th>
+                @Html.DisplayName("Link")
+            </th>
+            <th>
+                @Html.DisplayName("Tags")
+            </th>
+            <th>
+                @Html.DisplayName("Intro")
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tags)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Intro)
+                </td>
+            </tr>
+        }
+
+    </table>
+</fieldset>

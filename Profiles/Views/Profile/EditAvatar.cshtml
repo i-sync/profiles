@@ -1,0 +1,19 @@
+﻿@model Profiles.Models.Profile
+@{
+    ViewBag.Title = "EditAvatar";
+}
+
+<h2>EditAvatar</h2>
+@using (Html.BeginForm("EditAvatar", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.ID);
+    @Html.Label("Avatar")
+    <input type="file" name="avatar" />
+    <input type="submit" value="Upload" />
+    <br />
+    <img src="@Url.Content(Model.Avatar??"1")" alt="Avatar" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

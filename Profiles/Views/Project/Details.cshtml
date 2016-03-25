@@ -1,0 +1,50 @@
+﻿@model Profiles.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Project</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Link)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Link)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tags)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tags)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Intro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Intro)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
