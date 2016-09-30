@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Profiles.DAL;
 using Profiles.Models;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Profiles.Controllers
 {
@@ -19,7 +20,7 @@ namespace Profiles.Controllers
             //check if had login 
             if (Session["user"] != null)
                 return new RedirectResult(string.Format("/+{0}", (Session["user"] as Profile).Name));
-            return View();
+            return View(new Login() { UserName = "18501378365", Password = "123" });
         }
 
         [HttpPost]
@@ -31,9 +32,14 @@ namespace Profiles.Controllers
 
             string sql = "Select * from Profile where Name=@UserName or Email =@UserName or Phone =@UserName;";
             //sql
-            var param = new SqlParameter[] { 
+            /*var param = new SqlParameter[] { 
                 new SqlParameter("UserName",login.UserName)
+            };*/
+            //mysql
+            var param = new MySqlParameter[] {
+                new MySqlParameter("UserName",login.UserName)
             };
+            
             var profile = db.Profile.SqlQuery(sql, param).FirstOrDefault();
             if (profile == null)
             {

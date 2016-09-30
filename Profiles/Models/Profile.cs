@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -25,11 +26,17 @@ namespace Profiles.Models
         public DateTime UpdateDate { get; set; }
         public string Password { get; set; }
 
+        [NotMapped]
         public List<Skill> Skills { get; set; }
+        [NotMapped]
         public List<Project> Projects { get; set; }
+        [NotMapped]
         public List<Experience> Experiences { get; set; }
+        [NotMapped]
         public List<Education> Educations { get; set; }
+        [NotMapped]
         public List<Living> Livings { get; set; }
+        [NotMapped]
         public List<Link> Links { get; set; }
 
     }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Profiles.Models;
 using Profiles.DAL;
 using Profiles.Common;
+using System.Data.Objects;
 
 namespace Profiles.Controllers
 {
@@ -22,7 +23,7 @@ namespace Profiles.Controllers
         public ActionResult Index()
         {
             int pid = Common.Common.getProfile(Session).ID;
-            return View(db.Skill.Where(s => s.PID == pid).ToList());
+            return View(db.Skill.SqlQuery(string.Format("select * from Skill where PID = {0}",pid)));
         }
 
         //
@@ -86,7 +87,7 @@ namespace Profiles.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(skill).State = EntityState.Modified;
-                Common.Common.UpdateExcluded(db, skill, s => s.ID, s => s.PID);
+                Common.Common.UpdateExcluded(db, skill, s => s.PID);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

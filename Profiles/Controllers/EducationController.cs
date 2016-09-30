@@ -86,7 +86,7 @@ namespace Profiles.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(education).State = EntityState.Modified;
-                Common.Common.UpdateExcluded(db, education, e => e.ID, e => e.PID);
+                Common.Common.UpdateExcluded(db, education, e => e.PID);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
